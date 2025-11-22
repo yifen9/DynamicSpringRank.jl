@@ -1,9 +1,6 @@
 services:
   DynamicSpringRank.jl:
     image: ghcr.io/yifen9/dynamicspringrank.jl
-    build:
-      context: ..
-      dockerfile: Dockerfile
     container_name: DynamicSpringRank.jl
     working_dir: /workspace
     environment:
