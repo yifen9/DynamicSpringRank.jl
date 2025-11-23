@@ -2,8 +2,8 @@ name = "DynamicSpringRank"
 uuid = "980dd21f-4cda-4618-a98e-5dfdbf8a152e"
 version = "0.1.0"
 
+[compat]
+SpringRank = "0.1"
+
 [deps]
 SpringRank = "be6e8a61-07d1-4c53-9ea3-a8f885d7be3a"
-
-[compat]
-SpringRank = "0.1.0"

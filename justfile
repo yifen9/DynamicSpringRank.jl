@@ -7,7 +7,7 @@ add NAME:
 rm NAME:
 	julia -e 'using Pkg; Pkg.rm("{{NAME}}")'
 
-init:
+inst:
 	julia -e 'using Pkg; Pkg.instantiate()'
 
 resolve:
