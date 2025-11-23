@@ -1,23 +1,62 @@
-up:
-	julia -e 'using Pkg; Pkg.update()'
-
 add NAME:
 	julia -e 'using Pkg; Pkg.add("{{NAME}}")'
 
 rm NAME:
 	julia -e 'using Pkg; Pkg.rm("{{NAME}}")'
 
+up-main:
+	julia --project=. -e 'using Pkg; Pkg.update()'
+
+up-dev:
+	julia --project=dev -e 'using Pkg; Pkg.update()'
+
+up-docs:
+	julia --project=docs -e 'using Pkg; Pkg.update()'
+
+up:
+	just up-main
+	just up-dev
+	just up-docs
+
+inst-main:
+	julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+inst-dev:
+	julia --project=dev -e 'using Pkg; Pkg.instantiate()'
+
+inst-docs:
+	julia --project=docs -e 'using Pkg; Pkg.instantiate()'
+
 inst:
-	julia -e 'using Pkg; Pkg.instantiate()'
+	just inst-main
+	just inst-dev
+	just inst-docs
+
+resolve-main:
+	julia --project=. -e 'using Pkg; Pkg.resolve()'
+
+resolve-dev:
+	julia --project=dev -e 'using Pkg; Pkg.resolve()'
+
+resolve-docs:
+	julia --project=docs -e 'using Pkg; Pkg.resolve()'
 
 resolve:
-	julia -e 'using Pkg; Pkg.resolve()'
+	just resolve-main
+	just resolve-dev
+	just resolve-docs
 
 test:
 	julia -e 'using Pkg; Pkg.test()'
 
 fmt:
-	julia -e 'using JuliaFormatter; format(".")'
+	julia --project=dev -e 'using Pkg; Pkg.instantiate(); using JuliaFormatter; format(".")'
+
+docs:
+	julia --project=docs -e 'using Pkg; Pkg.develop(path="."); Pkg.instantiate(); include("docs/make.jl")'
+
+bench:
+	julia --project=dev -e 'using Pkg; Pkg.develop(path="."); Pkg.instantiate(); using PkgBenchmark; PkgBenchmark.benchmarkpkg(".")'
 
 ci:
 	julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate(); Pkg.test()'
