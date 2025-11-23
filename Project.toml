@@ -1,3 +1,5 @@
+authors = ["Li Yifeng <mail@yifen9.li>"]
+license = "MIT"
 name = "DynamicSpringRank"
 uuid = "980dd21f-4cda-4618-a98e-5dfdbf8a152e"
 version = "0.1.0"
