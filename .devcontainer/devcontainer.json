@@ -1,6 +1,6 @@
 {
-  "dockerComposeFile": "compose.yaml",
-  "service": "DynamicSpringRank.jl",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "dynamicspringrank-jl-dev",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
   "customizations": {
